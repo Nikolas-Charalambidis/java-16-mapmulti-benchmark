@@ -1,7 +1,7 @@
 # Java 16 MultiMap Benchmark
 
 - Related StackOverflow question: https://stackoverflow.com/q/64132803/3764965
-- JavaDoc: [`Stream::mapMulti(BiConsumer)`](https://download.java.net/java/early_access/jdk16/docs/api/java.base/java/util/stream/Stream.html#mapMulti(java.util.function.BiConsumer)
+- Early access JavaDoc of `Stream::mapMulti(BiConsumer)`: https://download.java.net/java/early_access/jdk16/docs/api/java.base/java/util/stream/Stream.html#mapMulti(java.util.function.BiConsumer
 - Related OpenJDK issues: [JDK-8238286](https://bugs.openjdk.java.net/browse/JDK-8238286), [JDK-8248166](https://bugs.openjdk.java.net/browse/JDK-8248166)
 
 ## Benchmarks

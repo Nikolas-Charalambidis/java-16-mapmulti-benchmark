@@ -17,8 +17,8 @@ import org.openjdk.jmh.annotations.OutputTimeUnit;
  */
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @BenchmarkMode(Mode.AverageTime)
-@OperationsPerInvocation(MapMulti_FlatMapOptional.COUNT)
-public class MapMulti_FlatMapOptional {
+@OperationsPerInvocation(MapMulti_FlatMap_Optional.COUNT)
+public class MapMulti_FlatMap_Optional {
 
 	public static final int COUNT = 10_000;
 	static List<Optional<Integer>> LIST = new ArrayList<>();
@@ -41,7 +41,7 @@ public class MapMulti_FlatMapOptional {
 	 * @return result list
 	 */
 	@Benchmark
-	public List<Integer> flatMapOptional() {
+	public List<Integer> flatMap_optional() {
 		return LIST.stream()
 			.flatMap(Optional::stream)
 			.collect(Collectors.toList());
@@ -53,7 +53,7 @@ public class MapMulti_FlatMapOptional {
 	 * @return result list
 	 */
 	@Benchmark
-	public List<Integer> mapMultiOptional() {
+	public List<Integer> mapMulti() {
 		return LIST.stream()
 			.<Integer>mapMulti(Optional::ifPresent)
 			.collect(Collectors.toList());

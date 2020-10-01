@@ -31,7 +31,7 @@
 **`Stream::flatMap(Function)` with `Optional::stream()` vs `Stream::mapMulti(BiConsumer)`**
  - Input size: 10'000
  - The methods generate a flattened list from Optional of integers
- - Source: `com.nichar.java16.benchmark.MapMulti_FilterMap`
+ - Source: `com.nichar.java16.benchmark.MapMulti_FlatMap_Optional`
  - Possible results:
    ```
    Benchmark                                   Mode  Cnt   Score   Error  Units

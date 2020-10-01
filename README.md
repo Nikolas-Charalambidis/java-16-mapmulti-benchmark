@@ -1,4 +1,4 @@
-# Java 16 MultiMap Benchmark
+# Java 16 MapMulti Benchmark
 
 - Related StackOverflow question: https://stackoverflow.com/q/64132803/3764965
 - Early access JavaDoc of `Stream::mapMulti(BiConsumer)`: https://download.java.net/java/early_access/jdk16/docs/api/java.base/java/util/stream/Stream.html#mapMulti(java.util.function.BiConsumer

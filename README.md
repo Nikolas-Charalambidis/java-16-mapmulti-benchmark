@@ -6,16 +6,39 @@
 
 ## Benchmarks
 
-saas
+**`Stream::filter(Predicate).map(Function)` vs `Stream::mapMulti(BiConsumer)`**
+ - Input size: 10'000
+ - The methods generate a list with filtered each 3rd value and mapped an increment by 1
+ - Source: `com.nichar.java16.benchmark.MapMulti_FilterMap`
+ - Possible results:
+    ```
+    sas 
+    ```
+
+**`Stream::flatMap(Function)` vs `Stream::mapMulti(BiConsumer)`**
+ - Input size: 10'000
+ - The methods generate and flatten a list of size of the same number of elements as the input number itself
+ - Source: `com.nichar.java16.benchmark.MapMulti_FilterMap`
+ - Possible results:
+    ```
+    sas 
+    ```
+
+**`Stream::filter(Predicate).map(Function)` vs `Stream::mapMulti(BiConsumer)`**
+ - Input size: 10'000
+ - The methods generate a list with filtered each 3rd value and mapped an increment by 1
+ - Source: `com.nichar.java16.benchmark.MapMulti_FilterMap`
+ - Possible results:
+    ```
+    sas 
+    ```
 
 ## How to run
 
 ### Prerequisites
 
  - **Needed to be done**: 
-   - Installed Java 16, at least version `jdk+16-14`.
- 
- 
+   - Installed Java 16, at least version `jdk+16-14`
  - **Included in the repository**: 
    - JMH dependencies ready in the `lib` folder: `jmh-core-1.23.jar`, `jmh-generator-annprocess-1.23.jar`, `jopt-simple-4.6.jar`, `commons-math3-3.2.jar`
    - `MANIFEST.MF` file pointing the classpath to the libraries
@@ -23,8 +46,8 @@ saas
 ### Windows
 1. Navigate to the root folder 
 2. Compile: `"C:\Program Files\Java\jdk-16\bin\javac.exe" -cp ./src/main/java ./src/main/java/com/nichar/java16/*.java ./src/main/java/com/nichar/java16/benchmark/*.java -classpath ./lib/* -d ./out/`
-3. Pack the slim JAR file: `"C:\Program Files\Java\jdk-16\bin\jar.exe" cvfm MultiMapBenchmark.jar ./src/main/resources/META-INF/MANIFEST.MF -C ./out/ .`
-4. Run the JAR file: `"C:\Program Files\Java\jdk-16\bin\java.exe" -jar MultiMapBenchmark.jar`
+3. Pack the slim JAR file: `"C:\Program Files\Java\jdk-16\bin\jar.exe" cvfm MapMultiBenchmark.jar ./src/main/resources/META-INF/MANIFEST.MF -C ./out/ .`
+4. Run the JAR file: `"C:\Program Files\Java\jdk-16\bin\java.exe" -jar MapMultiBenchmark.jar`
 
 Note the path to Java 16 might be different on your machine. 
 

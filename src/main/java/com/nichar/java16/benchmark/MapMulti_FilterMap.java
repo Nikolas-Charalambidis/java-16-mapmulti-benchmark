@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
@@ -13,12 +12,12 @@ import org.openjdk.jmh.annotations.OperationsPerInvocation;
 import org.openjdk.jmh.annotations.OutputTimeUnit;
 
 /**
- * Benchmark of Stream::mapMulti(BiConsumer) against Stream::flatMap(Function)
+ * Benchmark of Stream::mapMulti(BiConsumer) against Stream::filter(Predicate).map(Function)
  */
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @BenchmarkMode(Mode.AverageTime)
-@OperationsPerInvocation(MultiMap_FilterMap.COUNT)
-public class MultiMap_FlatMap {
+@OperationsPerInvocation(MapMulti_FilterMap.COUNT)
+public class MapMulti_FilterMap {
 
 	public static final int COUNT = 10_000;
 	static List<Integer> LIST = new ArrayList<>();
@@ -31,28 +30,29 @@ public class MultiMap_FlatMap {
 	}
 
 	/**
-	 * The method generates and flattens the same number of elements as the number itself
-	 * It uses Stream::flatMap(Function) as of Java 8
-	 * @return result flattened list
+	 * The method generates a list with filtered each 3rd value and mapped an increment by 1
+	 * It uses Stream::filter(Predicate).map(Function) as of Java 8
+	 * @return result list
 	 */
 	@Benchmark
-	public List<Integer> flatMap() {
+	public List<Integer> filterMap() {
 		return LIST.stream()
-			.flatMap(i -> IntStream.range(0, i).mapToObj(j -> i))
-			.collect(Collectors.toList());
+			.filter(i -> i % 3 == 0)
+			.map(i -> i + 1)
+			.collect(java.util.stream.Collectors.toList());
 	}
 
 	/**
-	 * The method generates and flattens the same number of elements as the number itself
+	 * The method generates a list with filtered each 3rd value and mapped an increment by 1
 	 * It uses Stream::mapMulti(BiConsumer) as of Java 16
-	 * @return result flattened list
+	 * @return result list
 	 */
 	@Benchmark
-	public List<Integer> mapMulti() {
+	public List<Integer> mapMultiAsFilterMap() {
 		return LIST.stream()
 			.<Integer>mapMulti((integer, consumer) -> {
-				for (int i = 0; i < integer; i++) {
-					consumer.accept(integer);
+				if (integer % 3 == 0) {
+					consumer.accept(integer + 1);
 				}
 			})
 			.collect(Collectors.toList());

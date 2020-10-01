@@ -3,14 +3,22 @@ package com.nichar.java16.benchmark;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import org.openjdk.jmh.annotations.Benchmark;
+import org.openjdk.jmh.annotations.BenchmarkMode;
+import org.openjdk.jmh.annotations.Mode;
+import org.openjdk.jmh.annotations.OperationsPerInvocation;
+import org.openjdk.jmh.annotations.OutputTimeUnit;
 
 /**
  * Benchmark of Stream::mapMulti(BiConsumer) against Stream::flatMap(Function) with Optional::stream
  */
-public class MultiMap_FlatMapOptional {
+@OutputTimeUnit(TimeUnit.NANOSECONDS)
+@BenchmarkMode(Mode.AverageTime)
+@OperationsPerInvocation(MapMulti_FlatMapOptional.COUNT)
+public class MapMulti_FlatMapOptional {
 
 	public static final int COUNT = 10_000;
 	static List<Optional<Integer>> LIST = new ArrayList<>();

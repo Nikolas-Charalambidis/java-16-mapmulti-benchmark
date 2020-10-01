@@ -13,7 +13,7 @@ import org.openjdk.jmh.annotations.OperationsPerInvocation;
 import org.openjdk.jmh.annotations.OutputTimeUnit;
 
 /**
- * Benchmark of Stream::mapMulti(BiConsumer) against Stream::flatMap(Function) with Optional::stream
+ * Benchmark of Stream::mapMulti(BiConsumer) against Stream::flatMap(Function) with Optional::stream()
  */
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @BenchmarkMode(Mode.AverageTime)
@@ -37,7 +37,7 @@ public class MapMulti_FlatMapOptional {
 
 	/**
 	 * The method generates a flattened list from Optional of integers
-	 * It uses Stream::flatMap(Function) with Optional::stream as of Java 9
+	 * It uses Stream::flatMap(Function) with Optional::stream() as of Java 9
 	 * @return result list
 	 */
 	@Benchmark

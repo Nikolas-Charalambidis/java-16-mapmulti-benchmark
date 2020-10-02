@@ -48,7 +48,7 @@ public class MapMulti_FilterMap {
 	 * @return result list
 	 */
 	@Benchmark
-	public List<Integer> mapMultiAsFilterMap() {
+	public List<Integer> mapMulti() {
 		return LIST.stream()
 			.<Integer>mapMulti((integer, consumer) -> {
 				if (integer % 3 == 0) {
